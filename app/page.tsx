@@ -1,5 +1,6 @@
 import Image from "next/image";
 import GummyPackage from "../public/go-solo-package.png";
+import HeroImg from "../public/hero-image.png";
 import Link from "next/link";
 
 export default function Home() {
@@ -78,7 +79,7 @@ export default function Home() {
                 <Image
                   alt="Gummy Jar Package"
                   className="object-contain"
-                  src={GummyPackage}
+                  src={HeroImg}
                   fill
                   priority
                 />
