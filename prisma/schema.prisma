@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  addedBy   String?
+  createdAt DateTime @default(now())
+}
+
+model Product {
+  id              String      @id @default(uuid())
+  name            String
+  description     String
+  indications     String?     @default("")
+  benefits        String?     @default("")
+  price           Int
+  discountPercent Int         @default(0)
+  stock           Int
+  category        String      @default("Gummies")
+  imageUrl        String
+  images          String[]    @default([])
+  isActive        Boolean     @default(true)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @default(now()) @updatedAt
+  orderItems      OrderItem[]
+}
+
+model Order {
+  id          String       @id @default(uuid())
+  clerkUserId String?
+  userEmail   String?
+  status      OrderStatus  @default(PENDING)
+  totalAmount Int
+  createdAt   DateTime     @default(now())
+  items       OrderItem[]
+  payment     Payment?
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  orderId   String
+  productId String
+  quantity  Int
+  price     Int
+
+  order     Order   @relation(fields: [orderId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model Payment {
+  id                String   @id @default(uuid())
+  orderId           String   @unique
+  razorpayOrderId   String
+  razorpayPaymentId String?
+  razorpaySignature String?
+  amount            Int
+  currency          String   @default("INR")
+  provider          String   @default("RAZORPAY")
+  status            String
+  createdAt         DateTime @default(now())
+
+  order Order @relation(fields: [orderId], references: [id])
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
