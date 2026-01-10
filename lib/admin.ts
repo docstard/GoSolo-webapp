@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 
 // Hardcoded super admin who always has access
-const SUPER_ADMIN_EMAIL = "anjaliy471@gmail.com";
+const SUPER_ADMIN_EMAIL = "contactus.gosolo@gmail.com";
 
 export async function isAdminEmail(email: string | null | undefined): Promise<boolean> {
   if (!email) return false;

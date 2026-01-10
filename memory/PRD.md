@@ -90,7 +90,7 @@ Build a full-stack e-commerce web application called "GoSolo" with:
 | Admin access | Yes (admin email) | No |
 
 ## Admin Access
-- Super Admin email: `anjaliy471@gmail.com` (cannot be removed)
+- Super Admin email: `contactus.gosolo@gmail.com` (cannot be removed)
 - Dynamic admin management via `/admin/settings`
 - Protected routes: `/admin`, `/admin/products`, `/admin/orders`, `/admin/settings`
 
@@ -137,4 +137,4 @@ CLERK_SECRET_KEY=...
   - Fixed admin page access issues - moved admin check from middleware to API/page level
   - Added dynamic admin user management with AdminUser database table
   - Created `/admin/settings` page for managing admin users by email
-  - Super admin (anjaliy471@gmail.com) is protected and cannot be removed
+  - Super admin (contactus.gosolo@gmail.com) is protected and cannot be removed
