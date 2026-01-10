@@ -35,7 +35,7 @@ export default function Home() {
               <div className="p-0.5 rounded-full bg-linear-to-r from-orange-500 to-blue-600 shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 transition-shadow cursor-pointer group">
                 <Link href="/shop">
                   <button className="bg-[#111] text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-full flex items-center gap-3 font-medium transition-all group-hover:bg-opacity-90 text-sm sm:text-base">
-                    Try Boost Gummies
+                    Try Go Slim
                     <span className="material-icons-round text-primary group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform">
                       north_east
                     </span>
