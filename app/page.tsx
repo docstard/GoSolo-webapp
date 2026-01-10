@@ -1,6 +1,6 @@
 import Image from "next/image";
 import GummyPackage from "../public/go-solo-package.png";
-import HeroImg from "../public/hero-image.png";
+import HeroImg from "../public/home-hero-img.png";
 import Link from "next/link";
 
 export default function Home() {
