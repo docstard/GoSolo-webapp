@@ -38,11 +38,22 @@ const HomePageHero = () => {
                             ease: "power2",
                             zIndex: 999,
                         });
-                        gsap.timeline().to(".bottle-shadow", {
-                            // scale: 0.8,
-                            filter: "drop-shadow(0 0 30px #f0b624)",
-                            ease: "power2",
-                        });
+                    gsap.timeline().to(".bottle-shadow", {
+                        // scale: 0.8,
+                        filter: "drop-shadow(0 0 30px #f0b624)",
+                        ease: "power2",
+                    });
+                    gsap.fromTo(".hero-heading", {
+                        y: 40,
+                        opacity: 0,
+                    }, {
+                        y: 0,
+                        opacity: 1,
+                        ease: "power2",
+                        scrub: 1.8,
+                        delay: 0.2,
+
+                    });
                 },
 
                 // Mobile fallback
@@ -80,7 +91,7 @@ const HomePageHero = () => {
                                 PERFORMANCE
                             </span>
                         </span>
-                        <span className="relative">
+                        <span className="hero-heading relative">
                             LEVEL UP YOUR <br />
                             <span className="text-secondary">DAILY</span> <br />
                             <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-600 to-amber-500">

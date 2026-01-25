@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Gravitas_One } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import ScrollSmoothProvider from "@/components/ScrollSmoothProvider";
+import { clashDisplay } from "./font";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,6 +15,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const gravitasOne = Gravitas_One({
+  weight: '400', // Gravitas One only has one weight: 400
+  subsets: ['latin'],
+  display: 'swap', // 'swap' is often recommended for better user experience
 });
 
 export const metadata: Metadata = {
@@ -34,17 +42,20 @@ export default function RootLayout({
             href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
             rel="stylesheet"
           />
+          
         </head>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistMono.className} antialiased`}
         >
           {/* Razorpay Script */}
-          <Script 
+          <Script
             src="https://checkout.razorpay.com/v1/checkout.js"
             strategy="lazyOnload"
           />
           <Navbar />
-          {children}
+          <ScrollSmoothProvider>
+            {children}
+          </ScrollSmoothProvider>
         </body>
       </html>
     </ClerkProvider>

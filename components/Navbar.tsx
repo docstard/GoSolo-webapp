@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useCartStore } from "@/store/cartStore";
 import { useState, useEffect } from "react";
 import { useUser, useClerk, SignedIn, SignedOut } from "@clerk/nextjs";
+import TransitionLink from "./TransitionLink";
 
 export default function Navbar() {
   const items = useCartStore((state) => state.items);
@@ -61,17 +62,11 @@ export default function Navbar() {
           <div className="p-px rounded-full bg-linear-to-r from-primary/50 to-secondary/50">
             <div className="bg-[#1E1E1E] glass-panel rounded-full px-6 xl:px-8 py-3 flex items-center gap-4 xl:gap-6 text-sm font-medium">
               
-              <Link href="/" className={linkClass("/")}>
-                Home
-              </Link>
+              <TransitionLink url="/" label="Home" />
 
-              <Link href="/shop" className={linkClass("/shop")} data-testid="nav-shop-link">
-                Shop
-              </Link>
+              <TransitionLink url="/shop" label="Shop" />
 
-              <Link href="/about" className={linkClass("/about")}>
-                About
-              </Link>
+              <TransitionLink url="/about" label="About" />
 
               <SignedIn>
                 <Link href="/orders" className={linkClass("/orders")} data-testid="nav-orders-link">
