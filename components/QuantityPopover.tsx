@@ -83,6 +83,7 @@ export function DrawerDialogDemo({ children, productQuantity, setProductQuantity
                             +
                         </button>
                     </div>
+                    <Button onClick={() => handleAddToCart(product, finalPrice)}>Add to cart</Button>
                 </DialogContent>
             </Dialog>
         )
