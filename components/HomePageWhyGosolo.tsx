@@ -91,7 +91,7 @@ const HomePageWhyGosolo = () => {
     // }, []);
 
     return (
-        <section className="sm:py-24 z-0 lg:min-h-screen relative bg-transparent" >
+        <section className="sm:py-24 z-0 lg:min-h-screen relative bg-black" >
             <div className="section-two z-0 max-w-7xl mx-auto px-4">
                 <div className="text-center mb-12 sm:mb-16">
                     <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl mb-4 text-white">
