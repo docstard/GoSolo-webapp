@@ -20,6 +20,7 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
+import { useCartStore } from "@/store/cartStore"
 
 // import { useMediaQuery } from "@/hooks/use-media-query"
 
@@ -28,12 +29,28 @@ interface DrawerDialogDemoProps {
     children: React.ReactNode
     productQuantity: number
     setProductQuantity: any
+    product?: any
+    finalPrice?: any
 }
 
 
-export function DrawerDialogDemo({ children, productQuantity, setProductQuantity }: DrawerDialogDemoProps) {
+export function DrawerDialogDemo({ children, productQuantity, setProductQuantity, product, finalPrice }: DrawerDialogDemoProps) {
     const [open, setOpen] = React.useState(false)
+    const addItem = useCartStore((s) => s.addItem);
+
     const isDesktop = window.innerWidth >= 768;
+
+    const handleAddToCart
+        = (product: any, finalPrice: number) => {
+            addItem({
+                id: product.id,
+                name: product.name,
+                price: finalPrice,
+                imageUrl: product.imageUrl,
+                quantity: productQuantity,
+            });
+            alert(`${product.name} added to cart!`);
+        }
 
     if (isDesktop) {
         return (
@@ -46,26 +63,26 @@ export function DrawerDialogDemo({ children, productQuantity, setProductQuantity
                         <DialogTitle>Product Quantity</DialogTitle>
                     </DialogHeader>
                     <div className="flex items-center gap-3">
-                    <button
-                        onClick={() =>
-                            setProductQuantity((qty : any) => Math.max(1, qty - 1))
-                        }
-                        className="px-3 py-1 border rounded"
-                    >
-                        −
-                    </button>
+                        <button
+                            onClick={() =>
+                                setProductQuantity((qty: any) => Math.max(1, qty - 1))
+                            }
+                            className="px-3 py-1 border rounded"
+                        >
+                            −
+                        </button>
 
-                    <span>{productQuantity}</span>
+                        <span>{productQuantity}</span>
 
-                    <button
-                        onClick={() =>
-                            setProductQuantity((qty : any) => qty + 1)
-                        }
-                        className="px-3 py-1 border rounded"
-                    >
-                        +
-                    </button>
-                </div>
+                        <button
+                            onClick={() =>
+                                setProductQuantity((qty: any) => qty + 1)
+                            }
+                            className="px-3 py-1 border rounded"
+                        >
+                            +
+                        </button>
+                    </div>
                 </DialogContent>
             </Dialog>
         )
@@ -83,7 +100,7 @@ export function DrawerDialogDemo({ children, productQuantity, setProductQuantity
                 <div className="flex items-center gap-3 px-4">
                     <button
                         onClick={() =>
-                            setProductQuantity((qty : any) => Math.max(1, qty - 1))
+                            setProductQuantity((qty: any) => Math.max(1, qty - 1))
                         }
                         className="px-3 py-1 border rounded"
                     >
@@ -94,15 +111,17 @@ export function DrawerDialogDemo({ children, productQuantity, setProductQuantity
 
                     <button
                         onClick={() =>
-                            setProductQuantity((qty : any) => qty + 1)
+                            setProductQuantity((qty: any) => qty + 1)
                         }
                         className="px-3 py-1 border rounded"
                     >
                         +
                     </button>
                 </div>
+
                 <DrawerFooter className="pt-2">
                     <DrawerClose asChild>
+                        <Button onClick={() => handleAddToCart(product, finalPrice)}>Add to cart</Button>
                         <Button variant="outline">Cancel</Button>
                     </DrawerClose>
                 </DrawerFooter>
@@ -141,7 +160,7 @@ export function DrawerDialogDemo({ children, productQuantity, setProductQuantity
 //                     </button>
 //                 </div>
 //             </div>
-//             <Button onClick={() => updateQuantity(items[0].id, quantity)}>Add to cart</Button>
+//             
 //         </form>
 //     )
 // }

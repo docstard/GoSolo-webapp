@@ -48,6 +48,7 @@ export default function ShopClient({ initialProducts }: ShopClientProps) {
   const [productQuantity, setProductQuantity] = useState(1)
 
 
+
   return (
     <main className="min-h-screen pt-24 sm:pt-32 px-4 sm:px-6 bg-black text-white">
       <div className="max-w-7xl mx-auto">
@@ -61,8 +62,8 @@ export default function ShopClient({ initialProducts }: ShopClientProps) {
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedCategory === cat
-                    ? "bg-primary text-black"
-                    : "bg-white/10 text-gray-300 hover:bg-white/20"
+                  ? "bg-primary text-black"
+                  : "bg-white/10 text-gray-300 hover:bg-white/20"
                   }`}
                 data-testid={`category-filter-${cat.toLowerCase().replace(" ", "-")}`}
               >
@@ -80,8 +81,8 @@ export default function ShopClient({ initialProducts }: ShopClientProps) {
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${selectedCategory === cat
-                    ? "bg-primary text-black"
-                    : "bg-white/10 text-gray-300"
+                  ? "bg-primary text-black"
+                  : "bg-white/10 text-gray-300"
                   }`}
               >
                 {cat} ({categoryCounts[cat]})
@@ -175,19 +176,12 @@ export default function ShopClient({ initialProducts }: ShopClientProps) {
                     </p>
 
                     <div className="flex gap-2">
-                      <DrawerDialogDemo productQuantity={productQuantity} setProductQuantity={setProductQuantity} >
+                      <DrawerDialogDemo product={product} finalPrice={finalPrice} productQuantity={productQuantity} setProductQuantity={setProductQuantity} >
 
                         <button
-                          onClick={() => {
-                            addItem({
-                              id: product.id,
-                              name: product.name,
-                              price: finalPrice,
-                              imageUrl: product.imageUrl,
-                              quantity: productQuantity,
-                            });
-                            alert(`${product.name} added to cart!`);
-                          }}
+                          // onClick={() => {
+                          //   handleAddToCart(product, finalPrice);
+                          // }}
                           disabled={product.stock === 0}
                           className="flex-1 py-2 rounded-full bg-primary text-black font-semibold hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                           data-testid={`add-to-cart-${product.id}`}
