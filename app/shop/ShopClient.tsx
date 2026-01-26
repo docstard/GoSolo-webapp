@@ -4,6 +4,7 @@ import { useCartStore } from "@/store/cartStore";
 import Link from "next/link";
 import { useState } from "react";
 import Footer from "@/components/Footer";
+import { DrawerDialogDemo } from "@/components/QuantityPopover";
 
 type Product = {
   id: string;
@@ -37,29 +38,32 @@ export default function ShopClient({ initialProducts }: ShopClientProps) {
 
   // Get category counts
   const categoryCounts = CATEGORIES.reduce((acc, cat) => {
-    acc[cat] = cat === "All" 
-      ? initialProducts.length 
+    acc[cat] = cat === "All"
+      ? initialProducts.length
       : initialProducts.filter((p) => p.category === cat).length;
     return acc;
   }, {} as Record<string, number>);
+
+
+  const [productQuantity, setProductQuantity] = useState(1)
+
 
   return (
     <main className="min-h-screen pt-24 sm:pt-32 px-4 sm:px-6 bg-black text-white">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 sm:mb-8">
           <h1 className="text-3xl sm:text-4xl font-bold">Shop Our Products</h1>
-          
+
           {/* Category Filter - Desktop */}
           <div className="hidden sm:flex items-center gap-2">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  selectedCategory === cat
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedCategory === cat
                     ? "bg-primary text-black"
                     : "bg-white/10 text-gray-300 hover:bg-white/20"
-                }`}
+                  }`}
                 data-testid={`category-filter-${cat.toLowerCase().replace(" ", "-")}`}
               >
                 {cat} ({categoryCounts[cat]})
@@ -75,11 +79,10 @@ export default function ShopClient({ initialProducts }: ShopClientProps) {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                  selectedCategory === cat
+                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${selectedCategory === cat
                     ? "bg-primary text-black"
                     : "bg-white/10 text-gray-300"
-                }`}
+                  }`}
               >
                 {cat} ({categoryCounts[cat]})
               </button>
@@ -102,7 +105,7 @@ export default function ShopClient({ initialProducts }: ShopClientProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {filteredProducts.map((product) => {
               const hasDiscount = product.discountPercent > 0;
-              const finalPrice = hasDiscount 
+              const finalPrice = hasDiscount
                 ? getDiscountedPrice(product.price, product.discountPercent)
                 : product.price;
 
@@ -149,7 +152,7 @@ export default function ShopClient({ initialProducts }: ShopClientProps) {
                       </h3>
                     </Link>
                     <p className="text-gray-400 text-sm mb-4 line-clamp-2">{product.description}</p>
-                    
+
                     {/* Price Display */}
                     <div className="mb-4">
                       {hasDiscount ? (
@@ -162,33 +165,36 @@ export default function ShopClient({ initialProducts }: ShopClientProps) {
                         <p className="text-primary font-bold text-lg sm:text-xl">₹{product.price}</p>
                       )}
                     </div>
-                    
+
                     <p className="text-gray-500 text-xs mb-4">
-                      {product.stock > 10 
-                        ? `In Stock` 
-                        : product.stock > 0 
-                          ? `Only ${product.stock} left!` 
+                      {product.stock > 10
+                        ? `In Stock`
+                        : product.stock > 0
+                          ? `Only ${product.stock} left!`
                           : "Out of Stock"}
                     </p>
 
                     <div className="flex gap-2">
-                      <button
-                        onClick={() => {
-                          addItem({
-                            id: product.id,
-                            name: product.name,
-                            price: finalPrice,
-                            imageUrl: product.imageUrl,
-                            quantity: 1,
-                          });
-                          alert(`${product.name} added to cart!`);
-                        }}
-                        disabled={product.stock === 0}
-                        className="flex-1 py-2 rounded-full bg-primary text-black font-semibold hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
-                        data-testid={`add-to-cart-${product.id}`}
-                      >
-                        {product.stock === 0 ? "Out of Stock" : "Add to cart"}
-                      </button>
+                      <DrawerDialogDemo productQuantity={productQuantity} setProductQuantity={setProductQuantity} >
+
+                        <button
+                          onClick={() => {
+                            addItem({
+                              id: product.id,
+                              name: product.name,
+                              price: finalPrice,
+                              imageUrl: product.imageUrl,
+                              quantity: productQuantity,
+                            });
+                            alert(`${product.name} added to cart!`);
+                          }}
+                          disabled={product.stock === 0}
+                          className="flex-1 py-2 rounded-full bg-primary text-black font-semibold hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+                          data-testid={`add-to-cart-${product.id}`}
+                        >
+                          {product.stock === 0 ? "Out of Stock" : "Add to cart"}
+                        </button>
+                      </DrawerDialogDemo>
                       <Link
                         href={`/product/${product.id}`}
                         className="px-3 sm:px-4 py-2 rounded-full border border-white/20 hover:bg-white/10 transition-colors flex items-center justify-center"
