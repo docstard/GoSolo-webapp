@@ -49,6 +49,7 @@ export function DrawerDialogDemo({ children, productQuantity, setProductQuantity
                 imageUrl: product.imageUrl,
                 quantity: productQuantity,
             });
+            setOpen(false);
             alert(`${product.name} added to cart!`);
         }
 
