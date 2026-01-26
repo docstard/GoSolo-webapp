@@ -91,7 +91,7 @@ const HomePageWhyGosolo = () => {
     // }, []);
 
     return (
-        <section className="sm:py-24 z-0 lg:min-h-screen relative bg-black" >
+        <section className="sm:py-24 z-0 lg:min-h-screen relative" >
             <div className="section-two z-0 max-w-7xl mx-auto px-4">
                 <div className="text-center mb-12 sm:mb-16">
                     <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl mb-4 text-white">
@@ -102,7 +102,7 @@ const HomePageWhyGosolo = () => {
                         functional energy.
                     </p>
                 </div>
-                <div className='grid grid-cols-2' >
+                <div className='md:grid md:grid-cols-2' >
                     <div></div>
                     <div ref={container} className="grid gap-6 sm:gap-8">
                         {features.map((feature, index) => (

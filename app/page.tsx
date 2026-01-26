@@ -8,7 +8,7 @@ import HomePageWhyGosolo from "@/components/HomePageWhyGosolo";
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="bg-dark">
       {/* HERO */}
       <HomePageHero />
 
