@@ -82,7 +82,7 @@ const HomePageHero = () => {
                     <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white">
                         <span
                             aria-hidden
-                            className="absolute inset-0 text-white blur-[14px] opacity-20 select-none"
+                            className="absolute inset-0 text-white blur-[14px] opacity-20 select-none -z-10"
                         >
                             LEVEL UP YOUR <br />
                             <span className="text-secondary">DAILY</span> <br />

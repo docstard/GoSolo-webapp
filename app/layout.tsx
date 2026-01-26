@@ -45,7 +45,7 @@ export default function RootLayout({
           
         </head>
         <body
-          className={`${geistMono.className} antialiased`}
+          className={`${geistSans.className} antialiased`}
         >
           {/* Razorpay Script */}
           <Script
