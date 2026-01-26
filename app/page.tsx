@@ -1,12 +1,10 @@
-import Image from "next/image";
-import GummyPackage from "../public/go-solo-package.png";
-import HeroImg from "../public/home-hero-img.png";
 import Link from "next/link";
 import HomePageHero from "@/components/Hero";
 import HomePageBrands from "@/components/HomePageBrands";
 import HomePageWhyGosolo from "@/components/HomePageWhyGosolo";
 
 export default function Home() {
+  
   return (
     <main className="bg-dark">
       {/* HERO */}

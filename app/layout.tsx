@@ -24,8 +24,8 @@ const gravitasOne = Gravitas_One({
 });
 
 export const metadata: Metadata = {
-  title: "GoSolo - Premium Gummy Supplements",
-  description: "Shop premium gummy supplements for energy, sleep, immunity, and focus",
+  title: "GoSolo - Premium Health Supplements",
+  description: "Shop premium Health supplements for energy, sleep, immunity, and focus",
 };
 
 export default function RootLayout({

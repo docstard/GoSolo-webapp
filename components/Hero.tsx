@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import HeroImg from "../public/home-hero-img.png";
 import Link from 'next/link';
 import gsap from 'gsap';
@@ -13,6 +13,8 @@ const HomePageHero = () => {
 
 
     useEffect(() => {
+        if (window.innerWidth < 768) return; // 🚫 mobile = no GSAP
+
         const ctx = gsap.context(() => {
             // Desktop only
             ScrollTrigger.matchMedia({
@@ -51,17 +53,17 @@ const HomePageHero = () => {
                         opacity: 1,
                         ease: "power2",
                         scrub: 1.8,
-                        delay: 0.2,
+                        delay: 0.5,
 
                     });
                 },
 
                 // Mobile fallback
-                "(max-width: 768px)": () => {
-                    gsap.set(bottleWrapperRef.current, {
-                        clearProps: "all",
-                    });
-                },
+                // "(max-width: 768px)": () => {
+                //     gsap.set(bottleWrapperRef.current, {
+                //         clearProps: "all",
+                //     });
+                // },
             });
 
             ScrollTrigger.refresh();
@@ -82,7 +84,7 @@ const HomePageHero = () => {
                     <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white">
                         <span
                             aria-hidden
-                            className="absolute inset-0 text-white blur-[14px] opacity-20 select-none -z-10"
+                            className="absolute hidden lg:block inset-0 text-white blur-[14px] opacity-20 select-none -z-10"
                         >
                             LEVEL UP YOUR <br />
                             <span className="text-secondary">DAILY</span> <br />
@@ -157,16 +159,16 @@ const HomePageHero = () => {
 
                     {/* Main product image */}
                     <div ref={bottleWrapperRef} className="hero-bottle-wrapper z-20 hover:scale-105">
-                        <div className="absolute inset-0 -z-10 blur-[60px] opacity-70">
+                        <div className="absolute sm:flex hidden inset-0 -z-10 blur-[60px] opacity-70">
                             <Image
                                 alt="Gummy Jar Package"
-                                className="object-contain z-100 bottle-shadow"
+                                className="object-contain z-100 bottle-shadow sm:flex hidden"
                                 src={HeroImg}
                                 style={{
                                     filter: "drop-shadow(0 0 120px #f0b624)",
                                 }}
                                 fill
-                                priority
+
                             />
                         </div>
                         <div className="relative z-100 w-48 h-72 sm:w-64 sm:h-96 md:w-80 md:h-120 lg:w-96 lg:h-137.5">
@@ -175,7 +177,7 @@ const HomePageHero = () => {
                                 className="object-contain z-100"
                                 src={HeroImg}
                                 fill
-                                priority
+                                loading='eager'
                             />
                         </div>
                     </div>

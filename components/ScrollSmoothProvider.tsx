@@ -6,6 +6,7 @@ import { useLayoutEffect } from "react"
 const ScrollSmoothProvider = ({ children } : {children: React.ReactNode}) => {
 
     useLayoutEffect(() => {
+        // if (window.innerWidth < 768) return; // 🚫 mobile = no GSAP
         gsap.registerPlugin(ScrollTrigger,ScrollSmoother)
         const ctx = gsap.context(() => {
             ScrollSmoother.create({

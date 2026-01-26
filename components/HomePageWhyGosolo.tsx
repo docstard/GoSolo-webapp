@@ -1,8 +1,7 @@
 "use client"
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { title } from 'process';
-import React, { useEffect, useRef } from 'react'
+import  {  useRef } from 'react'
 
 const features = [
     {
@@ -30,7 +29,7 @@ const features = [
 
 const featureBox = ({ icon, title, description, color } : { icon: string, title: string, description: string, color: string }) => {
     return (
-        <div className={`feature-box p-6 sm:p-8 rounded-3xl bg-card-bg border border-card-border hover:border-${color}/50 transition-colors group shadow-lg shadow-${color}/20 hover:shadow-${color}/40 `}>
+        <div className={`feature-box p-6 sm:p-8 rounded-3xl bg-card-bg border border-card-border hover:border-${color}/50 transition-colors group `}>
             <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-${color}/10 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-${color} group-hover:text-white transition-colors text-${color}`}>
                 <span className="material-icons-round text-2xl sm:text-3xl">{icon}</span>
             </div>
@@ -52,6 +51,7 @@ const HomePageWhyGosolo = () => {
 
     useGSAP(
         () => {
+            // if (window.innerWidth < 768) return; // 🚫 mobile = no GSAP
             tl.current = gsap
                 .timeline({
                     scrollTrigger: {
@@ -78,17 +78,6 @@ const HomePageWhyGosolo = () => {
         },
         { scope: container },
     );
-
-    // useEffect(() => {
-    //     const lenis = new Lenis();
-
-    //     function raf(time: any) {
-    //         lenis.raf(time);
-    //         requestAnimationFrame(raf);
-    //     }
-
-    //     requestAnimationFrame(raf);
-    // }, []);
 
     return (
         <section className="sm:py-24 z-0 lg:min-h-screen relative" >

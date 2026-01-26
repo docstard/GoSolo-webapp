@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -8,20 +9,25 @@ export default function AboutPage() {
           About GO SOLO
         </h1>
 
+        <Image
+          alt="About GO SOLO"
+          src="/about-us-hero.jpg"
+          width={1200}
+          height={600}
+          className="w-full h-auto rounded-lg mt-6 mb-8 object-cover"
+        />
+
         <p className="mt-6 text-base sm:text-lg text-gray-300">
-          GO SOLO is India&apos;s first functional gummy brand built for gamers,
-          students, athletes, and night owls who push limits every single day.
+          Go Solo is a natural, herbal and ayurvedic supplement making company for your best fitness, physical & mental fitness
+          and for your well being with our premium quality products.
         </p>
 
-        <p className="mt-4 text-gray-400">
-          We believe energy should be clean, focused, and crash-free. No sugar
-          spikes. No shady stimulants. Just science-backed ingredients that help
-          you perform when it matters most.
+        <p className="mt-4 text-base sm:text-lg text-gray-400">
+          At Go Solo, We are committed to every single who wants to be a better themselves with our nature derived products that are effective in nurturing growth and energizing body.
         </p>
 
-        <p className="mt-4 text-gray-400">
-          Whether you&apos;re grinding late nights, training hard, or chasing the
-          next win — GO SOLO is built to keep up with you.
+        <p className="mt-4 text-base sm:text-lg text-gray-400">
+          Go Solo aims to provide ultimate health solution to our customers with our innovative approaches to uplift their well being.
         </p>
 
         {/* Mission Section */}
