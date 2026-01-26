@@ -177,7 +177,6 @@ export default function ShopClient({ initialProducts }: ShopClientProps) {
 
                     <div className="flex gap-2">
                       <DrawerDialogDemo product={product} finalPrice={finalPrice} productQuantity={productQuantity} setProductQuantity={setProductQuantity} >
-                        
                           <button
                             disabled={product.stock === 0}
                             className="flex-1 py-2 rounded-full bg-primary text-black font-semibold hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
@@ -185,7 +184,6 @@ export default function ShopClient({ initialProducts }: ShopClientProps) {
                           >
                             {product.stock === 0 ? "Out of Stock" : "Add to cart"}
                           </button>
-                        
                       </DrawerDialogDemo>
                       <Link
                         href={`/product/${product.id}`}

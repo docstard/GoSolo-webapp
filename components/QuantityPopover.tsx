@@ -54,86 +54,84 @@ export function DrawerDialogDemo({ children, productQuantity, setProductQuantity
         }
 
     // if (isDesktop) {
-    return (
-        <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild>
-                <>
+        return (
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger asChild>
                     {children}
-                </>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-106.25">
-                <DialogHeader>
-                    <DialogTitle>Product Quantity</DialogTitle>
-                </DialogHeader>
-                <div className="flex items-center gap-3">
-                    <button
-                        onClick={() =>
-                            setProductQuantity((qty: any) => Math.max(1, qty - 1))
-                        }
-                        className="px-3 py-1 border rounded"
-                    >
-                        −
-                    </button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-106.25">
+                    <DialogHeader>
+                        <DialogTitle>Product Quantity</DialogTitle>
+                    </DialogHeader>
+                    <div className="flex items-center gap-3">
+                        <button
+                            onClick={() =>
+                                setProductQuantity((qty: any) => Math.max(1, qty - 1))
+                            }
+                            className="px-3 py-1 border rounded"
+                        >
+                            −
+                        </button>
 
-                    <span>{productQuantity}</span>
+                        <span>{productQuantity}</span>
 
-                    <button
-                        onClick={() =>
-                            setProductQuantity((qty: any) => qty + 1)
-                        }
-                        className="px-3 py-1 border rounded"
-                    >
-                        +
-                    </button>
-                </div>
-                <DrawerClose asChild>
-                    <Button onClick={() => handleAddToCart(product, finalPrice)}>Add to cart</Button>
-                </DrawerClose>
-            </DialogContent>
-        </Dialog>
-    )
+                        <button
+                            onClick={() =>
+                                setProductQuantity((qty: any) => qty + 1)
+                            }
+                            className="px-3 py-1 border rounded"
+                        >
+                            +
+                        </button>
+                    </div>
+                    <DrawerClose asChild>
+                        <Button onClick={() => handleAddToCart(product, finalPrice)}>Add to cart</Button>
+                    </DrawerClose>
+                </DialogContent>
+            </Dialog>
+        )
     // }
 
-    //     return (
-    //         <Drawer open={open} onOpenChange={setOpen}>
-    //             <DrawerTrigger asChild>
-    //                 {children}
-    //             </DrawerTrigger>
-    //             <DrawerContent>
-    //                 <DrawerHeader className="text-left">
-    //                     <DialogTitle>Product Quantity</DialogTitle>
-    //                 </DrawerHeader>
-    //                 <div className="flex items-center gap-3 px-4">
-    //                     <button
-    //                         onClick={() =>
-    //                             setProductQuantity((qty: any) => Math.max(1, qty - 1))
-    //                         }
-    //                         className="px-3 py-1 border rounded"
-    //                     >
-    //                         −
-    //                     </button>
+//     return (
+//         <Drawer open={open} onOpenChange={setOpen}>
+//             <DrawerTrigger asChild>
+//                 {children}
+//             </DrawerTrigger>
+//             <DrawerContent>
+//                 <DrawerHeader className="text-left">
+//                     <DialogTitle>Product Quantity</DialogTitle>
+//                 </DrawerHeader>
+//                 <div className="flex items-center gap-3 px-4">
+//                     <button
+//                         onClick={() =>
+//                             setProductQuantity((qty: any) => Math.max(1, qty - 1))
+//                         }
+//                         className="px-3 py-1 border rounded"
+//                     >
+//                         −
+//                     </button>
 
-    //                     <span>{productQuantity}</span>
+//                     <span>{productQuantity}</span>
 
-    //                     <button
-    //                         onClick={() =>
-    //                             setProductQuantity((qty: any) => qty + 1)
-    //                         }
-    //                         className="px-3 py-1 border rounded"
-    //                     >
-    //                         +
-    //                     </button>
-    //                 </div>
+//                     <button
+//                         onClick={() =>
+//                             setProductQuantity((qty: any) => qty + 1)
+//                         }
+//                         className="px-3 py-1 border rounded"
+//                     >
+//                         +
+//                     </button>
+//                 </div>
 
-    //                 <DrawerFooter className="pt-2">
-    //                     <DrawerClose asChild>
-    //                         <Button onClick={() => handleAddToCart(product, finalPrice)}>Add to cart</Button>
-    //                         <Button variant="outline">Cancel</Button>
-    //                     </DrawerClose>
-    //                 </DrawerFooter>
-    //             </DrawerContent>
-    //         </Drawer>
-    //     )
+//                 <DrawerFooter className="pt-2">
+//                     <DrawerClose asChild>
+//                         <Button onClick={() => handleAddToCart(product, finalPrice)}>Add to cart</Button>
+//                         <Button variant="outline">Cancel</Button>
+//                     </DrawerClose>
+//                 </DrawerFooter>
+//             </DrawerContent>
+//         </Drawer>
+//     )
 }
 
 // function CartQuantityForm({ className }: React.ComponentProps<"form">) {
