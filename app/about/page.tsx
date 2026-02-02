@@ -9,14 +9,6 @@ export default function AboutPage() {
           About GO SOLO
         </h1>
 
-        <Image
-          alt="About GO SOLO"
-          src="/about-us-hero.jpg"
-          width={1200}
-          height={600}
-          className="w-full h-auto rounded-lg mt-6 mb-8 object-cover"
-        />
-
         <p className="mt-6 text-base sm:text-lg text-gray-300">
           Go Solo is a natural, herbal and ayurvedic supplement making company for your best fitness, physical & mental fitness
           and for your well being with our premium quality products.
